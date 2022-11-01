@@ -1,0 +1,35 @@
+- Удалить все контейнеры
+docker container prune
+
+- Узнать ip адрес контейнера
+docker container inspect <ID> | grep IPAddress
+
+- Подключиться к контейнеру
+docker exec -it <ID/Name> bash
+
+- Установить произвольное имя контейнера
+docker run -d --name <name> nginx
+
+- Маппинг портов
+docker run -d -p <Внешний порт:Порт контейнера> nginx
+-d = detach
+-p = publish
+
+- Маппинг томов
+docker run -v ${PWD}:/usr/share/nginx/html nginx
+docker run -d -v /Users/jnxwl/Docker:/usr/share/nginx/html -p 8082:80 nginx
+-v = volume
+
+- Пример
+docker run -d -p 8080:80 -v /Users/jnxwl/Desktop/docker/nginx/:/usr/share/nginx/html  --rm --name nginx nginx
+--rm - удаление после остановки
+
+
+- Разбитие на строки:
+docker run \ 
+  --name my_name \
+  -v ${PWD}:/usr/share/nginx/html \
+  -p 8080:80 \
+  -d \
+  --rm \
+  nginx
