@@ -1,0 +1,39 @@
+Структура:
+
+-docker-compose
+  -app
+    main.py
+    Dockerfile
+ docker-compose.yml
+
+
+[main.py]
+from pymongo import MongoClient
+from pprint import pprint
+MONGO_URL = "mongodb://mongo:27017"
+client = MongoClient(MONGO_URL)
+db = client.admin
+dbs_list = db.command("listDatabases")
+pprint(dbs_list)
+
+
+[Dockerfile]
+FROM python:alpine
+
+WORKDIR /app
+
+RUN pip install pymongo
+
+COPY . .
+
+CMD [ "python", "main.py" ]
+
+
+[docker-compose.yml]
+version: '3'
+
+services:
+  app:
+    build: ./app
+  mongo:
+    image: mongo
