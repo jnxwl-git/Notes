@@ -1,3 +1,15 @@
+- Запуск
+docker-compose up
+
+- Запуск в bg
+docker-compose up -d
+
+- Остановка и удаление контейнеров и сети
+docker-compose down
+
+
+
+
 Структура:
 
 -docker-compose
