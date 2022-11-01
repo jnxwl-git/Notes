@@ -7,7 +7,8 @@ docker-compose up -d
 - Остановка и удаление контейнеров и сети
 docker-compose down
 
-
+- Пересобрать образ (при внесении изменений)
+docker-compose up -d --build
 
 
 Структура:
