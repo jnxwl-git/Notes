@@ -10,6 +10,16 @@ docker-compose down
 - Пересобрать образ (при внесении изменений)
 docker-compose up -d --build
 
+- Переменные среды
+mysql:
+  image: mysql
+  ...
+  environment:
+    MYSQL_ROOT_PASSWORD: passwd
+    MYSQL_DATABASE: time_db
+  ...
+
+
 
 Структура:
 
@@ -50,3 +60,4 @@ services:
     build: ./app
   mongo:
     image: mongo
+    restart: always
