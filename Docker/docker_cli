@@ -24,12 +24,24 @@ docker run -d -v /Users/jnxwl/Docker:/usr/share/nginx/html -p 8082:80 nginx
 docker run -d -p 8080:80 -v /Users/jnxwl/Desktop/docker/nginx/:/usr/share/nginx/html  --rm --name nginx nginx
 --rm - удаление после остановки
 
+- Просмотр томов
+docker volume ls
+
+- Просмотр тома (детально)
+docker inspect <имя тома>
+
+- Просмотр лога
+docker logs  <имя контейнера>
+
 
 - Разбитие на строки:
-docker run \ 
+docker run \
   --name my_name \
   -v ${PWD}:/usr/share/nginx/html \
   -p 8080:80 \
   -d \
   --rm \
   nginx
+
+- Переменные среды
+docker run -d -e MY_ENV_VARIABLE=test nginx
